@@ -1,20 +1,23 @@
 <script setup>
+import { ref } from 'vue'
 defineProps({
   msg: {
     type: String,
     required: true
   }
 })
+
+const user_summary = ref('')
 </script>
 
 <template>
+  <!-- Where the input will be for text input-->
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+    <h1 class="orange">{{ msg }}</h1>
+
+    <span>Try and Write a summary of what you remember from the last video you watched:</span>
+	  <p style="white-space: pre-line;">{{ user_summary }}</p>
+	  <textarea v-model="user_summary" placeholder="add multiple lines"></textarea>
   </div>
 </template>
 
@@ -26,19 +29,23 @@ h1 {
   top: -10px;
 }
 
-h3 {
+textarea {
+  text-align: center;
+}
+
+span {
   font-size: 1.2rem;
 }
 
 .greetings h1,
 .greetings h3 {
-  text-align: center;
+  text-align: right;
 }
 
 @media (min-width: 1024px) {
   .greetings h1,
   .greetings h3 {
-    text-align: left;
+    text-align: center;
   }
 }
 </style>
